@@ -26,6 +26,19 @@ app.post("/search",(req,res)=>{
     ).catch()
 })
 
+app.post("/remove",(req,res)=>{
+    let input=req.body
+    contactmodel.findByIdAndDelete(input._id).then(
+        (response)=>{
+            res.json({status:"success"})
+        }
+    ).catch(
+        (error)=>{
+            res.json({status:"error"})
+        }
+    )
+})
+
 app.post("/view",(req,res)=>{
     contactmodel.find().then(
         (data)=>{
