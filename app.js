@@ -17,6 +17,15 @@ app.post("/add",(req,res)=>{
     res.json({status:"success"})
 })
 
+app.post("/search",(req,res)=>{
+    let input=req.body
+    contactmodel.find(input).then(
+        (data)=>{
+            res.json(data)
+        }
+    ).catch()
+})
+
 app.listen(8335,()=>{
     console.log("server started")
 })
