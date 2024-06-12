@@ -26,6 +26,18 @@ app.post("/search",(req,res)=>{
     ).catch()
 })
 
+app.post("/view",(req,res)=>{
+    contactmodel.find().then(
+        (data)=>{
+            res.json(data)
+        }
+    ).catch(
+        (error)=>{
+            alert(error.message)
+        }
+    )
+})
+
 app.listen(8335,()=>{
     console.log("server started")
 })
